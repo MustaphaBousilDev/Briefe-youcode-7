@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    font-family: 'Urbanist',sans-serif;
+    padding:0;
+    box-sizing: border-box;
+}
+a{text-decoration: none;}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+.login{
+    width:80%;
+    height:550px;
+    border:1px solid rgb(197, 197, 197);
+    background-color: #fff;
+    border-radius: 15px;
+    overflow:hidden;
+}
+.login .content-login{
+    display: flex;
+}
+.login .content-login .left{
+    flex:1;height:550px;
+}
+.login .content-login .left img{
+    width: 100%;height:100%;
+}
+.login .content-login .right{
+    flex:1;height:550px;
+    padding:60px;
+}
+.login .content-login .right h1{text-align: center;margin-bottom:25px;}
+.login .content-login .right form{
+    height:calc(100% - 120px);
+    /* background-color: red; */
+    padding-top:10px;
+}
+.login .content-login .right form .field{
+    width:90%;
+    /* background-color: yellow; */
+    margin:5px auto;
+    margin-bottom:15px;
+    height:50px;
+    position: relative;
+    border:1px solid rgb(178, 178, 178);
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 0 35px;
+}
+.login .content-login .right form .field.field-password input::placeholder{
+    font-size:40px;font-weight: bold;color:rgb(147, 144, 144);
+    letter-spacing:-1px;
+}
+.login .content-login .right form .check-rem{
+    width: 90%;margin:5px auto;
+    margin-bottom:25px;
+}
+.login .content-login .right form .field .icon{
+    font-size:22px;
+    position: absolute;left:10px;top:50%;transform: translateY(-50%);
+}
+.login .content-login .right form .field .icon-err{color:red;display: none;}
+.login .content-login .right form .field .icon-normal{color:rgb(178, 178, 178);}
+.login .content-login .right form .field input{
+    width: 100%;height:100%;
+    border:0;
+    outline:none;
+}
+.login .content-login .right form .field.field-submit{
+    padding: 0;
+}
+.login .content-login .right form .field.field-submit input{
+    width: 100%;height:100%;
+    font-size:15px;
+    padding:0;color:#fff;font-weight: bold;
+    background-color: rgb(0, 128, 255);cursor: pointer;
+    opacity: .9;
+    transition:.3s;
+}
+.login .content-login .right form .field.field-submit input:hover{
+    opacity: 1;
+}
+.login .content-login .right form .signup-div{
+    width: 90%;margin:  auto;
+    display: flex;justify-content: space-between;
+    /* background-color: red; */
+    height:50px;align-items: center;
+}
+.login .content-login .right form .signup-div p{font-size: 14px;color:rgb(121, 120, 120);}
+.login .content-login .right form .signup-div p a:hover{text-decoration: underline;}
+
+@media screen and (max-width:420px){
+    .login{
+        width: 93%;border-radius: 5px;
+        border: none;
+    }
+    body{align-items:flex-start;}
+    .login{margin-top:40px;}
+    .login .content-login .right{padding:10px;}
+    .login .content-login .left{display: none;}
+    .login .content-login .right form .field{width: 98%;
+    border-radius:5px ;}
+
+}
