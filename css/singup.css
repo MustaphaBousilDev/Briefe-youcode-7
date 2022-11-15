@@ -2,7 +2,7 @@
 ul{list-style: none;}
 a{text-decoration: none;}
 body{display: flex;justify-content: center;align-items: center;height: 100vh;}
-.signup{width: 85%;height:65vh ;
+.signup{width: 85%;height:70vh ;
     /* background-color: red; */
     display: flex;
     border: 1px solid rgb(210, 208, 208);
@@ -41,7 +41,7 @@ margin-top: 25px;}
     font-weight: bold;font-size:14px;
     letter-spacing: 1px;
 }
-.signup .left-s .field-s .input-area .password{font-size: 18px;}
+.signup .left-s .field-s .input-area .password{}
 .signup .left-s .field-s .input-area input {
     width: 98%;margin: auto;padding:20px 30px;outline: none;
     border: 1px solid rgb(203, 203, 203);border-radius: 6px;

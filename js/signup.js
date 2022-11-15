@@ -158,6 +158,40 @@ form_signup.onsubmit=(e)=>{
             }
         }
     }
+    //////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
+    if(password_confirm_input.value==''){
+        Valid_Failed(e,password_confirm_input,field_confirm)
+        field_confirm.querySelector('span').innerHTML='Password confirm Cant be Empty'
+    }else{
+        if(password_confirm_input.value!=password_input.value){
+            Valid_Failed(e,password_confirm_input,field_confirm)
+            password_confirm_input.value !="" ? field_confirm.querySelector('span').innerHTML='Password is not match' : 'Password Cant be Empty'
+        }
+        else{
+            Valid_success(password_confirm_input,field_confirm)
+            field_confirm.querySelector('span').innerHTML='Password is match'
+            field_confirm.querySelector('span').style.color='green'
+            field_confirm.querySelector('.icon').style.color="green"
+        }
+    }
+    password_confirm_input.onkeyup=()=>{
+        if(password_confirm_input.value==''){
+            Valid_Failed(e,password_confirm_input,field_confirm)
+        }else{
+            if(password_confirm_input.value!=password_input.value){
+                Valid_Failed(e,password_confirm_input,field_confirm)
+                password_confirm_input.value !="" ? field_confirm.querySelector('span').innerHTML='Password is not match' : 'Password Cant be Empty'
+               
+            }
+            else{
+                Valid_success(password_confirm_input,field_confirm)
+                field_confirm.querySelector('span').innerHTML='Password is match'
+                field_confirm.querySelector('span').style.color='green'
+                field_confirm.querySelector('.icon').style.color="green"
+            }
+        }
+    }
 
 }
 
@@ -274,4 +308,5 @@ function check_password(e,input,field){
         field_pass.querySelector('.icon').style.color="green"
     }
 }
+
 
