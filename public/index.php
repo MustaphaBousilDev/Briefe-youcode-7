@@ -19,7 +19,7 @@ if(isset($_SESSION['first_name'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboards.css">
 
 
 </head>
@@ -72,77 +72,8 @@ if(isset($_SESSION['first_name'])){
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><img class="rounded-circle" src="https://m.media-amazon.com/images/I/81tQhEEtiEL._AC_UL480_FMwebp_QL65_.jpg" width="25" height="25" /></td>
-                    <td>Guitar</td>
-                    <td>Musique</td>
-                    <td>25</td>
-                    <td>199</td>
-                    <td>22-11-2022</td>
-                    <td>
-                        <a href="#" class="btn btn-sm  btn-success"><i class="bi bi-pencil-square"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
-                        <a href="#" class="btn btn-sm btn-primary text-white"><i class="bi bi-eye-fill"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><img class="rounded-circle" src="https://m.media-amazon.com/images/I/81tQhEEtiEL._AC_UL480_FMwebp_QL65_.jpg" width="25" height="25" /></td>
-                    <td>Guitar</td>
-                    <td>Musique</td>
-                    <td>25</td>
-                    <td>199</td>
-                    <td>22-11-2022</td>
-                    <td>
-                        <a href="#" class="btn btn-sm  btn-success"><i class="bi bi-pencil-square"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
-                        <a href="#" class="btn btn-sm btn-primary text-white"><i class="bi bi-eye-fill"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><img class="rounded-circle" src="https://m.media-amazon.com/images/I/81tQhEEtiEL._AC_UL480_FMwebp_QL65_.jpg" width="25" height="25" /></td>
-                    <td>Guitar</td>
-                    <td>Musique</td>
-                    <td>25</td>
-                    <td>199</td>
-                    <td>22-11-2022</td>
-                    <td>
-                        <a href="#" class="btn btn-sm  btn-success"><i class="bi bi-pencil-square"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
-                        <a href="#" class="btn btn-sm btn-primary text-white"><i class="bi bi-eye-fill"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><img class="rounded-circle" src="https://m.media-amazon.com/images/I/81tQhEEtiEL._AC_UL480_FMwebp_QL65_.jpg" width="25" height="25" /></td>
-                    <td>Guitar</td>
-                    <td>Musique</td>
-                    <td>25</td>
-                    <td>199</td>
-                    <td>22-11-2022</td>
-                    <td>
-                        <a href="#" class="btn btn-sm  btn-success"><i class="bi bi-pencil-square"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
-                        <a href="#" class="btn btn-sm btn-primary text-white"><i class="bi bi-eye-fill"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><img class="rounded-circle" src="https://m.media-amazon.com/images/I/81tQhEEtiEL._AC_UL480_FMwebp_QL65_.jpg" width="25" height="25" /></td>
-                    <td>Guitar</td>
-                    <td>Musique</td>
-                    <td>25</td>
-                    <td>199</td>
-                    <td>22-11-2022</td>
-                    <td>
-                        <a href="#" class="btn btn-sm  btn-success"><i class="bi bi-pencil-square"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
-                        <a href="#" class="btn btn-sm btn-primary text-white"><i class="bi bi-eye-fill"></i></a>
-                    </td>
-                  </tr>
+                <tbody class="my-table-body">
+                  
                 </tbody>
             </table>
         </div>
@@ -152,57 +83,250 @@ if(isset($_SESSION['first_name'])){
 
 
     <!-- Add new Modal -->
-	    <div class="modal fade" id="add-new-modal" tabindex="-1" aria-labelledby="add-new-modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="add-new-modalLabel">Add new Product</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="product">
-                    <div class="pro-principal d-flex justify-content-center align-items-center">
-                        +
-                    </div>
-                    <ul>
-                        <li>+</li>
-                        <li>+</li>
-                        <li>+</li>
-                    </ul>
-                </div>
-                <form>
-                    <input type="file" hidden name="img1"/>
-                    <input type="file" hidden name="img2"/>
-                    <input type="file" hidden name="img3"/>
-                    <input type="file" hidden name="img4"/>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Product Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" style="box-shadow: none;">
-                    </div>
-                    <input type="number" name="quantity">
-                    <input type="text" name="price"/>
-                    <select>
-                        <option>Category</option>
-                        <option>one</option>
-                        <option>one</option>
-                        <option>one</option>
-                        <option>one</option>
-                    </select>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="box-shadow: none;"></textarea>
-                    </div>
-                    <input class="btn btn-primary" type="submit" value="save"/>
-                </form>
-            </div>
-          </div>
-        </div>
-        </div>
-    <!-- End Add new Modal -->
+	<div class="modal fade" id="add-new-modal" tabindex="-1" aria-labelledby="add-new-modalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="add-new-modalLabel">Add new customer</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+
+	      <form method="POST" class="js-add-user-form" onsubmit="add_new(event)">
+	      <div class="modal-body">
+	        
+		        <label class="mt-2 d-block" style="cursor: pointer;text-align: center;">
+		        	<img src="images/user.png" class="js-add-image mx-auto d-block" style="width:150px;height: 150px;object-fit: cover;">
+
+		        	<div class="input-group mb-3">
+					  <label class="input-group-text" for="inputGroupFile01">Upload</label>
+					  <input id="image"  onchange="display_image(this.files[0])" type="file" class="form-control" id="inputGroupFile01" required>
+					</div>
+
+		        	<script>
+		        		function display_image(file)
+		        		{
+		        			let allowed = ['jpg','jpeg','png'];
+
+		        			let ext = file.name.split(".").pop();
+		        			
+		        			if(allowed.includes(ext.toLowerCase()))
+		        			{
+		        				document.querySelector('.js-add-image').src = URL.createObjectURL(file);
+		        				image_added = true;
+		        			}else 
+		        			{
+		        				alert("Only the following image types are allowed:"+ allowed.toString(", "));
+		        			}
+
+		        		}
+		        	</script>
+		        </label>
+		      	<div class="mt-2">
+				  <label for="name" class="form-label">Name</label>
+				  <input  type="text" class="form-control" id="names" name="name" placeholder="Name" required>
+				</div>
+
+		      	<div class="mt-2">
+				  <label for="quantity" class="form-label">quantity</label>
+				  <input  type="number" min="1" max="100" value="1" class="form-control" id="quantitys" name="quantity"  required>
+				</div>
+
+		      	<div class="mt-2">
+				  <label for="price" class="form-label">price</label>
+          <input  type="number" min="1" max="100" value="1" class="form-control" id="prices" name="price" required>
+				</div>
+
+		      	<div class="mt-2">
+				  <label for="category" class="form-label">Category</label>
+				  <select id="categorys" name="category">
+            <option value="1">one</option>
+            <option value="2">one</option>
+            <option value="3">one</option>
+            <option value="4">one</option>
+          </select>
+				</div>
+        <div class="mt-2">
+          <textarea  id="descriptions" name="description">
+
+          </textarea>
+				</div>
+
+				      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Save</button>
+	      </div>
+	      </form>
+
+	    </div>
+	  </div>
+	</div>
+	<!-- End Add new Modal -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="../js/dashboard.js"></script>
 <script>
+    var image_added = false;
     const addModal = new bootstrap.Modal('#add-new-modal', {});
+    send_data({},'read');
+    function send_data(obj, type)
+	{
+		var form = new FormData();
+		for(key in obj)
+		{
+			form.append(key,obj[key]);
+
+		}
+    console.log(form)
+
+		form.append('data_type',type);
+    
+
+		var ajax = new XMLHttpRequest();
+
+		ajax.addEventListener('readystatechange',function(){
+
+			if(ajax.readyState == 4)
+			{
+				if(ajax.status == 200)
+				{
+					handle_result(ajax.responseText);
+
+				}else{
+					alert("an error occured");
+				}
+			}
+		});
+
+		ajax.open('post','backend.php',true);
+
+		ajax.send(form);
+	}
+
+    function handle_result(result)
+	{
+		
+		//console.log(result);
+		var obj = JSON.parse(result);
+    //console.log(obj);
+    //console.log(obj.data[1])
+		if(typeof obj == 'object')
+		{
+			if(obj.data_type == 'read'){
+				let tbody = document.querySelector(".my-table-body");
+				let str = "";
+				if(typeof obj.data == 'object'){
+					for (var i = 0; i < obj.data.length; i++) {
+						let row = obj.data[i];
+						str += `<tr>
+                      <td>${row.ID}</td>
+                      <td><img class="rounded-circle" onclick="get_view_row(${row.id});viewModal.show()" src="${row.image}" style="width:25px;height:25px;object-fit: cover;cursor:pointer" /></td>
+                      <td>${row.name}</td>
+                      <td>${row.category}</td>
+                      <td>${row.quantity}</td>
+                      <td>${row.price}</td>
+                      <td>${row.date}</td>
+						          <td>
+                          <button onclick="get_view_row(${row.id});viewModal.show()"  class="btn btn-sm  btn-primary text-white"><i class="bi bi-eye-fill"></i></button>
+                          <button onclick="get_edit_row(${row.id});editModal.show()"  class="btn btn-sm btn-success"><i class="bi bi-pencil-square"></i></button>
+                          <button onclick="delete_row(${row.id})"  class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></button>
+						          </td>
+						        </tr>`;
+					}
+				}else{str = "<tr><td>No records found!</td></tr>";}
+
+				tbody.innerHTML = str;
+			}else
+			if(obj.data_type == 'save')
+			{
+				alert(obj.data);
+				send_data({},'read');
+			}else
+			if(obj.data_type == 'edit')
+			{
+				alert(obj.data);
+				send_data({},'read');
+			}else
+			if(obj.data_type == 'delete')
+			{
+				alert(obj.data);
+				send_data({},'read');
+			}else
+			if(obj.data_type == 'get-edit-row')
+			{
+				let row = obj.data;
+				
+				if(typeof row == 'object')
+				{
+					let myModal = document.querySelector("#edit-new-modal");
+					for (key in row)
+					{
+						if(key == "image")
+							document.querySelector(".js-edit-image").src = row[key];
+
+						let input = myModal.querySelector("#"+key);
+						if(input != null)
+						{
+							if(key != "image")
+								input.value = row[key];
+						}
+					}
+				}
+			}else
+			if(obj.data_type == 'get-view-row')
+			{
+				let row = obj.data;
+				
+				if(typeof row == 'object')
+				{
+					let myModal = document.querySelector("#view-new-modal");
+					for (key in row)
+					{
+						if(key == "image")
+							document.querySelector(".js-view-image").src = row[key];
+
+						let input = myModal.querySelector("#"+key);
+						if(input != null)
+						{
+							if(key != "image")
+								input.innerHTML = row[key];
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+    function add_new(e){
+        e.preventDefault();
+        //validate 
+        if(!image_added){
+          alert("An image is required");return}
+        let obj = {};
+        let inputs = e.currentTarget.querySelectorAll("input,select,textarea");
+        //console.log(inputs)
+        for (var i = 0; i < inputs.length; i++) {
+          if(inputs[i].type == 'file' && image_added){
+            obj[inputs[i].id] = inputs[i].files[0];
+          }else{
+            obj[inputs[i].id] = inputs[i].value;
+            //console.log(obj)
+          }
+          inputs[i].value = "";
+        }
+        image_added = false;
+        document.querySelector(".js-add-image").src = "images/user.png";
+        /*document.querySelector('.image-2').src = "images/user.png";
+        document.querySelector('.image-3').src = "images/user.png";
+        document.querySelector('.image-4').src = "images/user.png";
+        */
+        //console.log('ggg')
+        //console.log(obj)
+        send_data(obj,'save');
+        addModal.hide();
+	}
+
+
 </script>
 </body>
 </html>
