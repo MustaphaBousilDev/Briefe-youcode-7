@@ -3,10 +3,25 @@
 
 require '../private/init.php';
 $user_data=check_login($connection);
+#var_dump($user_data);
 $username="";
 if(isset($_SESSION['first_name'])){
     $username=$_SESSION['first_name'];
 }
+$query="SELECT * FROM categories";
+$stmt=$connection->prepare($query);
+$check=$stmt->execute();
+$categories=$stmt->fetchAll(PDO::FETCH_OBJ);
+if(is_array($categories) && count($categories)>0){
+    ;
+	#echo "<pre>";
+    #print_r($categories);
+    #echo "</pre>";
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -95,8 +110,8 @@ if(isset($_SESSION['first_name'])){
 		        	<img src="images/user.png" class="js-add-image mx-auto d-block" style="width:150px;height: 150px;object-fit: cover;">
 
 		        	<div class="input-group mb-3">
-					  <label class="input-group-text" for="inputGroupFile01">Upload</label>
-					  <input id="image"  onchange="display_image(this.files[0])" type="file" class="form-control" id="inputGroupFile01" required>
+					  <!--<label class="input-group-text" for="inputGroupFile01">Upload</label>-->
+					  <input id="image"  onchange="display_image(this.files[0])" type="file" class="form-control" id="inputGroupFile01" required hidden>
 					</div>
 
 		        	<script>
@@ -134,12 +149,12 @@ if(isset($_SESSION['first_name'])){
 				</div>
 
 		      	<div class="mt-2">
+				
 				  <label for="category" class="form-label">Category</label>
 				  <select id="categorys" name="category">
-            <option value="1">one</option>
-            <option value="2">one</option>
-            <option value="3">one</option>
-            <option value="4">one</option>
+					<?php foreach($categories as $category): ?>
+					    <option value="<?=$category->id?>"><?=$category->name?></option>
+					<?php endforeach ?>
           </select>
 				</div>
         <div class="mt-2">
@@ -279,8 +294,7 @@ if(isset($_SESSION['first_name'])){
 		var obj = JSON.parse(result);
     //console.log(obj);
         //console.log(obj.data)
-		if(typeof obj == 'object')
-		{
+		if(typeof obj == 'object'){
 			if(obj.data_type == 'read'){
 				let tbody = document.querySelector(".my-table-body");
 				let str = "";
@@ -295,11 +309,11 @@ if(isset($_SESSION['first_name'])){
                       <td>${row.quantity}</td>
                       <td>${row.price}</td>
                       <td>${row.date}</td>
-						          <td>
-                          <button onclick="get_view_row(${row.ID});viewModal.show()"  class="btn btn-sm  btn-primary text-white"><i class="bi bi-eye-fill"></i></button>
-                          <button onclick="get_edit_row(${row.ID});editModal.show()"  class="btn btn-sm btn-success"><i class="bi bi-pencil-square"></i></button>
-                          <button onclick="delete_row(${row.ID})"  class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></button>
-						          </td>
+					  <td>
+						<button onclick="get_view_row(${row.ID});viewModal.show()"  class="btn btn-sm  btn-primary text-white"><i class="bi bi-eye-fill"></i></button>
+						<button onclick="get_edit_row(${row.ID});editModal.show()"  class="btn btn-sm btn-success"><i class="bi bi-pencil-square"></i></button>
+						<button onclick="delete_row(${row.ID})"  class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></button>
+					  </td>
 						        </tr>`;
 					}
 				}else{str = "<tr><td>No records found!</td></tr>";}

@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $data=$stmt->fetchAll(PDO::FETCH_OBJ);
         
         if(is_array($data) && count($data)>0){
-            $error.="<div class='alert alert-danger text-center p-3'>this email is fucking exists</div>";
+            $error.="<div class='alert alert-danger text-center p-3'>this email is exists</div>";
         }else{
             if($error==""){
                 $arr['url_address']=$url_adress;
@@ -44,10 +44,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 $query="INSERT INTO users (url_address,first_name,last_name,phone_number,email,password,date) VALUES (:url_address,:first_name,:last_name,:phone_number,:email,:password,:date)";
                 $stmt=$connection->prepare($query);
                 $stmt->execute($arr);
-                $data=$data[0];
-                $_SESSION['first_name']=$data->first_name;
-                $_SESSION['last_name']=$data->last_name;
-                $_SESSION['url_address']=$data->url_address;
+                #$data=$data[0];
+                #$_SESSION['first_name']=$data->first_name;
+                #echo $_SESSION['first_name'];
+                #$_SESSION['last_name']=$data->last_name;
+                #$_SESSION['url_address']=$data->url_address;
                 header('Location:login.php');
                 die;
             }
