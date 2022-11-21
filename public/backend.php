@@ -97,18 +97,18 @@ global $connection;
 			}
 		}
 		$id 	        = (int)$_POST['id'];
-		$name 	        =$_POST['name'];
-		$quantity 	    =(int)$_POST['quantity'];
+		$name 	        = $_POST['name'];
+		$quantity 	    = (int)$_POST['quantity'];
 		$image 	        = $image;
-        $category       =(int)$_POST['category'];
-		$description 	=$_POST['description'];
+        $category       = (int)$_POST['category'];
+		$description 	= $_POST['description'];
 		$price 	        = (int)$_POST['price'];
 		$date_created 	= date("Y-m-d H:i:s");
 		if(empty($image)){
-			$stmt_up=$connection->prepare('UPDATE products SET name=? , description=? , category=?, price=? , quantity=? ,date=?  WHERE ID=?');
+			$stmt_up=$connection->prepare('UPDATE products SET name=? , description=? , category=?, price=? , quantity=? ,date=?  WHERE id=?');
 			$stmt_up->execute(array($name,$description,$category,$price,$quantity,$date_created,$id));
 		}else{
-			$stmt_up=$connection->prepare('UPDATE products SET name=? , description=? , category=?, price=? , quantity=?,image=? ,date=?  WHERE ID=?');
+			$stmt_up=$connection->prepare('UPDATE products SET name=? , description=? , category=?, price=? , quantity=?,image=? ,date=?  WHERE =?');
 			$stmt_up->execute(array($name,$description,$category,$price,$quantity,$image,$date_created,$id));
 		}
 		$info['data'] 	= "Record was edited!";

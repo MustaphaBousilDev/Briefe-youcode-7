@@ -8,6 +8,7 @@ $username="";
 if(isset($_SESSION['first_name'])){
     $username=$_SESSION['first_name'];
 }
+
 $query="SELECT * FROM categories";
 $stmt=$connection->prepare($query);
 $check=$stmt->execute();
@@ -18,6 +19,24 @@ if(is_array($categories) && count($categories)>0){
     #print_r($categories);
     #echo "</pre>";
 }
+$query2="SELECT * FROM users";
+$stmt2=$connection->prepare($query2);
+$check2=$stmt2->execute();
+$count=$stmt2->rowCount();
+#echo "hhhh";
+#echo $count;
+
+$query3="SELECT * FROM products";
+$stmt3=$connection->prepare($query3);
+$check3=$stmt3->execute();
+$coun2=$stmt3->rowCount();
+
+$price="SELECT sum(price) FROM products";
+$stmt7=$connection->prepare($price);
+$nbr=$stmt7->execute();
+$nbrd=$stmt7->fetch();
+
+
 
 
 
@@ -39,7 +58,7 @@ if(is_array($categories) && count($categories)>0){
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light" style="height: 60px;">
+    <nav class="navbar navbar-expand-lg bg-light" style="height: 60px;margin-bottom:20px">
         <div class="container">
           <a class="navbar-brand" href="#">MUGIWARA</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,6 +90,31 @@ if(is_array($categories) && count($categories)>0){
           
         </div>
     </nav>
+	<div class="container" >
+		<div class='row'>
+		<div class="card col-sm-12 col-md-4 col-lg-3 bg-transparent border-0 p-2" style="height:180px">
+			<div class="card-body border d-flex justify-content-center align-items-center">
+			<i class="bi bi-people-fill" style="font-size:50px"></i> <?=$count?>
+			</div>
+        </div>
+		<div class="card col-sm-12 col-md-4 col-lg-3 bg-transparent border-0 p-2" style="height:180px">
+			<div class="card-body border d-flex justify-content-center align-items-center">
+			<i class="bi bi-tag-fill" style="font-size:50px"></i> <?=$coun2?>
+			</div>
+        </div>
+		
+		<div class="card col-sm-12 col-md-4 col-lg-3 bg-transparent border-0 p-2" style="height:180px">
+			<div class="card-body border d-flex justify-content-center align-items-center">
+			<i class="bi bi-currency-dollar" style="font-size:50px"></i> 3000
+			</div>
+        </div>
+		<div class="card col-sm-12 col-md-4 col-lg-3 bg-transparent border-0 p-2" style="height:180px">
+			<div class="card-body border d-flex justify-content-center align-items-center">
+			<i class="bi bi-person-fill-check" style="font-size:50px"></i> Online(<?=$_SESSION['first_name'];?>)
+			</div>
+        </div>
+		</div>
+	</div>
     <div class="container">
         <a href="#" class="btn btn-warning mt-3 mb-0 " onclick="addModal.show()">Add Product</a>
         <div class="table-responsive-sm table-responsive-md mt-5" style="border: 1px solid rgb(200, 198, 198);border-bottom: 0;">
@@ -186,7 +230,7 @@ if(is_array($categories) && count($categories)>0){
 
 	      <form class="js-edit-user-form" onsubmit="edit_row(event)">
 	      <div class="modal-body">
-	        
+	            <input type="hidden" id="id" name="id" />
 		        <label class="mt-2 d-block" style="cursor: pointer;text-align: center;">
 		        	<img src="images/user.png" class="js-edit-image mx-auto d-block" style="width:150px;height: 150px;object-fit: cover;">
 
@@ -282,7 +326,6 @@ if(is_array($categories) && count($categories)>0){
 				}
 			}
 		});
-        
 		ajax.open('post','backend.php',true);
 		ajax.send(form);
 	}
@@ -302,17 +345,16 @@ if(is_array($categories) && count($categories)>0){
 					for (var i = 0; i < obj.data.length; i++) {
 						let row = obj.data[i];
 						str += `<tr>
-                      <td>${row.ID}</td>
-                      <td><img class="rounded-circle" onclick="get_view_row(${row.ID});viewModal.show()" src="${row.image}" style="width:25px;height:25px;object-fit: cover;cursor:pointer" /></td>
+                      <td>${row.id}</td>
+                      <td><img class="rounded-circle" onclick="get_view_row(${row.id});viewModal.show()" src="${row.image}" style="width:25px;height:25px;object-fit: cover;cursor:pointer" /></td>
                       <td>${row.name}</td>
                       <td>${row.category}</td>
                       <td>${row.quantity}</td>
                       <td>${row.price}</td>
                       <td>${row.date}</td>
 					  <td>
-						<button onclick="get_view_row(${row.ID});viewModal.show()"  class="btn btn-sm  btn-primary text-white"><i class="bi bi-eye-fill"></i></button>
-						<button onclick="get_edit_row(${row.ID});editModal.show()"  class="btn btn-sm btn-success"><i class="bi bi-pencil-square"></i></button>
-						<button onclick="delete_row(${row.ID})"  class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></button>
+						<button onclick="get_edit_row(${row.id});editModal.show()"  class="btn btn-sm btn-success"><i class="bi bi-pencil-square"></i></button>
+						<button onclick="delete_row(${row.id})"  class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></button>
 					  </td>
 						        </tr>`;
 					}
@@ -345,16 +387,13 @@ if(is_array($categories) && count($categories)>0){
 					console.log('is object')
 					let myModal = document.querySelector("#edit-new-modal");
 					//console.log(row)
-					for (key in row)
-					{
-						console.log(key)
+					for (key in row){
 						//document.querySelector(".js-edit-image").src = row['image'];
-						
 						if(key == "image")
 							document.querySelector(".js-edit-image").src = row[key];
 
 						let input = myModal.querySelector("#"+key);
-						console.log(input)
+						
 						//console.log(input)
 						if(input != null)
 						{
@@ -363,29 +402,7 @@ if(is_array($categories) && count($categories)>0){
 						}
 					}
 				}
-			}else
-			if(obj.data_type == 'get-view-row')
-			{
-				let row = obj.data;
-				
-				if(typeof row == 'object')
-				{
-					let myModal = document.querySelector("#view-new-modal");
-					for (key in row)
-					{
-						if(key == "image")
-							document.querySelector(".js-view-image").src = row[key];
-
-						let input = myModal.querySelector("#"+key);
-						if(input != null)
-						{
-							if(key != "image")
-								input.innerHTML = row[key];
-						}
-					}
-				}
 			}
-
 		}
 	}
 
@@ -421,17 +438,21 @@ if(is_array($categories) && count($categories)>0){
 		e.preventDefault();
 		let obj = {};
 		let inputs = e.currentTarget.querySelectorAll("input,select,textarea");
+		console.log(inputs[0].value)
+
 		for (var i = 0; i < inputs.length; i++) {
 			if(inputs[i].type == 'file' && image_added){
 				obj[inputs[i].id] = inputs[i].files[0];
 			}else{
 				obj[inputs[i].id] = inputs[i].value;
 			}
-			inputs[i].value = "";
+			obj['id'] = inputs[0].value;
 		}
+		
 		image_added = false;
 		document.querySelector(".js-edit-image").src = "images/user.png";
 		send_data(obj,'edit');
+		console.log('fjfjfjfjf')
 		console.log(obj)
 		editModal.hide();
 	}
@@ -446,9 +467,7 @@ if(is_array($categories) && count($categories)>0){
 		//console.log('fuck')
 		//console.log(id)
 	}
-	function get_view_row(id){
-		send_data({id:id},'get-view-row');
-	}
+	
 
 
 
