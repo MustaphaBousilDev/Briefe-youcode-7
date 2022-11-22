@@ -108,7 +108,7 @@ global $connection;
 			$stmt_up=$connection->prepare('UPDATE products SET name=? , description=? , category=?, price=? , quantity=? ,date=?  WHERE id=?');
 			$stmt_up->execute(array($name,$description,$category,$price,$quantity,$date_created,$id));
 		}else{
-			$stmt_up=$connection->prepare('UPDATE products SET name=? , description=? , category=?, price=? , quantity=?,image=? ,date=?  WHERE =?');
+			$stmt_up=$connection->prepare('UPDATE products SET name=? , description=? , category=?, price=? , quantity=?,image=? ,date=?  WHERE id=?');
 			$stmt_up->execute(array($name,$description,$category,$price,$quantity,$image,$date_created,$id));
 		}
 		$info['data'] 	= "Record was edited!";

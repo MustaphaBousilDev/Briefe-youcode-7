@@ -441,14 +441,16 @@ $nbrd=$stmt7->fetch();
 		for (var i = 0; i < inputs.length; i++) {
 			if(inputs[i].type == 'file' && image_added){
 				obj[inputs[i].id] = inputs[i].files[0];
+				console.log(inputs[i])
 			}else{
 				obj[inputs[i].id] = inputs[i].value;
+				console.log(inputs[i])
 			}
 			obj['id'] = inputs[0].value;
 		}
 		
 		image_added = false;
-		document.querySelector(".js-edit-image").src = "images/user.png";
+		document.querySelector(".js-add-image").src = "images/user.png";
 		send_data(obj,'edit');
 		console.log('fjfjfjfjf')
 		console.log(obj)
