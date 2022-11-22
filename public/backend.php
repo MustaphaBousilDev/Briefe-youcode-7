@@ -9,7 +9,7 @@ global $connection;
 	$info['data_type'] = $_POST['data_type'];
     if($_POST['data_type'] == 'read'){
 
-		$query 			= "select * from products ORDER BY ID desc";
+		$query 			= "SELECT products.* , categories.name AS categories_name FROM products INNER JOIN categories ON categories.id=products.category;  ORDER BY id desc";
 		//$result 		= query($query);
         $stmt=$connection->prepare($query);
         $stmt->execute();

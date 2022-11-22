@@ -77,8 +77,6 @@ $nbrd=$stmt7->fetch();
                           <img class="rounded-circle" src="me.jpg" width="45px" height="45px" alt="fff"/>
                         </a> 
                         <ul class="dropdown-menu" style="left:-100px;">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="logout.php">Log-out</a></li>
                         </ul>
@@ -195,14 +193,14 @@ $nbrd=$stmt7->fetch();
 		      	<div class="mt-2">
 				
 				  <label for="category" class="form-label">Category</label>
-				  <select id="categorys" name="category">
+				  <select id="categorys" name="category" class="form-select">
 					<?php foreach($categories as $category): ?>
 					    <option value="<?=$category->id?>"><?=$category->name?></option>
 					<?php endforeach ?>
           </select>
 				</div>
         <div class="mt-2">
-          <textarea  id="descriptions" name="description">
+          <textarea  id="descriptions" name="description" class="form-control">
 
           </textarea>
 				</div>
@@ -348,7 +346,7 @@ $nbrd=$stmt7->fetch();
                       <td>${row.id}</td>
                       <td><img class="rounded-circle" onclick="get_view_row(${row.id});viewModal.show()" src="${row.image}" style="width:25px;height:25px;object-fit: cover;cursor:pointer" /></td>
                       <td>${row.name}</td>
-                      <td>${row.category}</td>
+                      <td>${row.categories_name}</td>
                       <td>${row.quantity}</td>
                       <td>${row.price}</td>
                       <td>${row.date}</td>
